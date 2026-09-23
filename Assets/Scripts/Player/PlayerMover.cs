@@ -12,17 +12,9 @@ public class PlayerMover : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    public void Thrust()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Thrust();
-        }
-    }
-
-    private void Thrust()
-    {
-        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
         _rigidbody.AddForce(Vector3.up * _thrustForce, ForceMode.Impulse);
     }
 }
