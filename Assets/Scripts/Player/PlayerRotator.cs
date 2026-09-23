@@ -20,7 +20,7 @@ public class PlayerRotator : MonoBehaviour
     {
         float currentZ = transform.eulerAngles.z;
 
-        if (Mathf.Approximately(currentZ, _targetTilt))
+        if (Mathf.Approximately(currentZ, _targetTilt) && _targetTilt != _tiltDownAngle)
             TiltDown();
 
         float newZ = Mathf.MoveTowardsAngle(currentZ, _targetTilt, _tiltSpeed * Time.deltaTime);
