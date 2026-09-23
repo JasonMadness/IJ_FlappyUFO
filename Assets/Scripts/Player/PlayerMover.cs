@@ -22,6 +22,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Thrust()
     {
+        _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(Vector3.up * _thrustForce, ForceMode.Impulse);
     }
 }
