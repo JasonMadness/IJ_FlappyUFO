@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 1261757559}
   - component: {fileID: 1261757562}
   - component: {fileID: 1261757561}
+  - component: {fileID: 1261757563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 1261757562}
   _playerMover: {fileID: 1261757561}
+  _playerRotator: {fileID: 1261757563}
 --- !u!54 &1261757560
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -349,6 +351,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thrustButtonKey: 32
+--- !u!114 &1261757563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261757557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a3fe5bdace7ef4b9a9fe695c7c8e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tiltUpAngle: 20
+  _tiltDownAngle: -35
+  _tiltUpSpeed: 250
+  _tiltDownSpeed: 40
 --- !u!1001 &1501437077
 PrefabInstance:
   m_ObjectHideFlags: 0
