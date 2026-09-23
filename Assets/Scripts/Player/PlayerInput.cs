@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public event Action ThrustPressed;
+    [SerializeField] private KeyCode _thrustButtonKey = KeyCode.Space;
+
+    public event Action ThrustButtonPressed;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(_thrustKey))
         {
-            ThrustPressed?.Invoke();
+            ThrustButtonPressed?.Invoke();
         }
     }
 }
