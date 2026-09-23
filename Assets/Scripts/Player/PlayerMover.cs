@@ -1,20 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
+    [SerializeField] private float _thrustForce = 5f;
+
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            Thrust();
         }
     }
 
-    private void Jump()
+    private void Thrust()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.up * _thrustForce, ForceMode.Impulse);
     }
 }
