@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_thrustKey))
+        if (Input.GetKeyDown(_thrustButtonKey))
         {
             ThrustButtonPressed?.Invoke();
         }
