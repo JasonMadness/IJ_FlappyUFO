@@ -10,13 +10,11 @@ public class Player : MonoBehaviour
     {
         _playerInput.ThrustButtonPressed += _playerMover.Thrust;
         _playerInput.ThrustButtonPressed += _playerRotator.TiltUp;
-        _playerMover.FallingStarted += _playerRotator.TiltDown;
     }
 
     private void OnDisable()
     {
         _playerInput.ThrustButtonPressed -= _playerMover.Thrust;
         _playerInput.ThrustButtonPressed -= _playerRotator.TiltUp;
-        _playerMover.FallingStarted -= _playerRotator.TiltDown;
     }
 }
