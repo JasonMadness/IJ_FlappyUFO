@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Jump()
     {
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
     }
 }
