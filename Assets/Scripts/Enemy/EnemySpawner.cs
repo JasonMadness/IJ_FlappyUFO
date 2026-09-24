@@ -1,18 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Enemy _prefab;
+    [SerializeField] private float _boundary = 4f;
+    [SerializeField] private float _spawnInterval = 3f;
+
+    private void Start()
     {
-        
+        StartCoroutine(SpawnEnemy());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnEnemy()
     {
-        
+        WaitForSeconds wait = new WaitForSeconds(_spawnInterval);
+
+        while (enabled)
+        {
+            Spawn();
+            yield return wait;
+        }        
+    }
+
+    private void Spawn()
+    {
+        float randomY = Random.Range(-_boundary, _boundary);
+        Vector3 spawnPosition = new Vector3(transform.position.x, randomY, 0f);
+        Instantiate(_prefab, spawnPosition, Quaternion.identity);
     }
 }
