@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Pool<T> : MonoBehaviour where T : Component
+public abstract class ObjectPool<T> : MonoBehaviour where T : Component
 {
     [SerializeField] private T _prefab;
 
