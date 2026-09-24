@@ -1,18 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public abstract class Pool<T> : MonoBehaviour where T : Component
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private T _prefab;
+
+    private Queue<T> _pool = new();
+
+    public T Get()
     {
-        
+        if (_pool.Count == 0)
+            Create();
+
+        T item = _pool.Dequeue();
+        item.gameObject.SetActive(true);
+        return item;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Release(T item)
     {
-        
+        item.gameObject.SetActive(false);
+        _pool.Enqueue(item);
+    }
+
+    private void Create()
+    {
+        T newItem = Instantiate(_prefab, transform);
+        Release(newItem);
     }
 }
