@@ -1,18 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private EnemyLaserPool _laserPool;
+    [SerializeField] private float _interval = 3f;
+
+    private void OnEnable()
     {
-        
+        StartCoroutine(ShootLaser());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize(EnemyLaserPool laserPool)
     {
-        
+        _laserPool = laserPool;
+    }
+
+    private IEnumerator ShootLaser()
+    {
+        WaitForSeconds wait = new WaitForSeconds(_interval);
+
+        while (enabled)
+        {
+            yield return wait;
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        EnemyLaser laser = _laserPool.Get();
+        laser.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
     }
 }
