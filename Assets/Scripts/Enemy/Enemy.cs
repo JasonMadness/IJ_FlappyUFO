@@ -9,6 +9,12 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
         _pool = pool;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Laser>(out _))
+            ReturnToPool();
+    }
+
     public void ReturnToPool()
     {
         _pool.Release(this);
