@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjectPool<T> : MonoBehaviour where T : Component
+public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPoolable<T>
 {
     [SerializeField] private T _prefab;
 
@@ -26,6 +26,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component
     private void Create()
     {
         T newItem = Instantiate(_prefab, transform);
+        newItem.Initialize(this);
         Release(newItem);
     }
 }
