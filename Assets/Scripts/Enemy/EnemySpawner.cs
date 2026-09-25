@@ -28,7 +28,6 @@ public class EnemySpawner : MonoBehaviour
         float randomY = Random.Range(-_boundary, _boundary);
         Vector3 spawnPosition = new Vector3(transform.position.x, randomY, 0f);
         Enemy enemy = _pool.Get();
-        enemy.Initialize(_pool);
         enemy.transform.position = spawnPosition;
     }
 }
