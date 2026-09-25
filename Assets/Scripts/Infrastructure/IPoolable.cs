@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public interface IPoolable<T> where T : MonoBehaviour, IPoolable<T>
+public interface IPoolable
+{
+    void ReturnToPool();
+}
+
+public interface IPoolable<T> : IPoolable where T : MonoBehaviour, IPoolable<T>
 {
     void Initialize(ObjectPool<T> pool);
-    void ReturnToPool();
 }
