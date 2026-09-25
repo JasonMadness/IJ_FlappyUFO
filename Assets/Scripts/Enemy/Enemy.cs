@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IPoolable
+public class Enemy : MonoBehaviour, IPoolable<Enemy>
 {
     private ObjectPool<Enemy> _pool;
 
