@@ -16,6 +16,11 @@ public class Laser : MonoBehaviour, IPoolable<Laser>
         transform.Translate(Vector3.right * Time.deltaTime * _speed);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        ReturnToPool();
+    }
+
     public void ReturnToPool()
     {
         _pool.Release(this);
