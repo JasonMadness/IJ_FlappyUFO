@@ -19,6 +19,9 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPo
 
     public void Release(T item)
     {
+        if (_pool.Contains(item))
+            return;
+
         item.gameObject.SetActive(false);
         _pool.Enqueue(item);
     }
