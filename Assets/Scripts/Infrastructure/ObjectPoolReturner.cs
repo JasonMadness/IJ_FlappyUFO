@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class ObjectPoolReturner : MonoBehaviour
 {
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<IPoolable>(out IPoolable poolableObject))
-        {
-            poolableObject.ReturnToPool();
-        }
-    }*/
+        if (other.TryGetComponent<IPoolable>(out IPoolable poolable))
+            poolable.ReturnToPool();
+    }
 }
