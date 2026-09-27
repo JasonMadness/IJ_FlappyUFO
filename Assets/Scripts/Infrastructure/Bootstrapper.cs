@@ -4,6 +4,7 @@ public class Bootstrapper : MonoBehaviour
 {
     [SerializeField] private CollisionHandler _collisionHandler;
     [SerializeField] private Pause _pause;
+    [SerializeField] private GameOver _gameOver;
 
     private void OnEnable()
     {
@@ -18,5 +19,6 @@ public class Bootstrapper : MonoBehaviour
     private void OnCollisionDetected()
     {
         _pause.On();
+        _gameOver.ShowHUD();
     }
 }
