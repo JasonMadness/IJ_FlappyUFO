@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class EnemyLaser : MonoBehaviour, IPoolable<EnemyLaser>
 {
+    private const string EnemyMask = "Enemy";
+    private const string PlayerLaserMask = "PlayerLaser";
+
     [SerializeField] private float _speed = 15f;
 
     private ObjectPool<EnemyLaser> _pool;
@@ -9,7 +12,7 @@ public class EnemyLaser : MonoBehaviour, IPoolable<EnemyLaser>
 
     private void Awake()
     {
-        _ignoredLayer = LayerMask.GetMask("Enemy");
+        _ignoredLayer = LayerMask.GetMask(EnemyMask, PlayerLaserMask);
         GetComponent<Collider>().excludeLayers = _ignoredLayer;
     }
 
