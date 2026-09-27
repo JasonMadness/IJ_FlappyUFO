@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float _pauseSpeed = 0f;
+    private float _gameSpeed = 1f;
+
+    public void On()
     {
-        
+        Time.timeScale = _pauseSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Off()
     {
-        
+        Time.timeScale = _gameSpeed;
     }
 }
