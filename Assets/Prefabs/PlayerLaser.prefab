@@ -121,6 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
+  _ignoredLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!54 &6718275955480295830
 Rigidbody:
   m_ObjectHideFlags: 0
