@@ -5,7 +5,7 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField] private CollisionHandler _collisionHandler;
     [SerializeField] private Pause _pause;
     [SerializeField] private GameOver _gameOver;
-    [SerializeField] private Restart _restart;
+    [SerializeField] private SceneLoader _restart;
 
     private void OnEnable()
     {

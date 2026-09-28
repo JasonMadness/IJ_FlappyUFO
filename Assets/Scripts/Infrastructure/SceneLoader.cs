@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class Restart : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    public Action Restarted;
+    public event Action Restarted;
 
     public void RestartGame()
     {
