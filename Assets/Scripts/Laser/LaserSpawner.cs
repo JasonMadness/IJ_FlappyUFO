@@ -13,7 +13,6 @@ public class LaserSpawner : MonoBehaviour
         if (_pool.TryGet(out Laser laser) == false)
         {
             laser = Instantiate(_prefab, transform);
-            laser.gameObject.SetActive(false);
         }
 
         laser.transform.SetPositionAndRotation(position, rotation);
