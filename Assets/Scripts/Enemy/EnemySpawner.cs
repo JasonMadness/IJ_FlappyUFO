@@ -4,7 +4,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyPool _pool;
-    [SerializeField] private EnemyLaserPool _laserPool;
     [SerializeField] private float _boundary = 4f;
     [SerializeField] private float _spawnInterval = 3f;
 
@@ -21,15 +20,24 @@ public class EnemySpawner : MonoBehaviour
         {
             Spawn();
             yield return wait;
-        }        
+        }
     }
 
     private void Spawn()
     {
         float randomY = Random.Range(-_boundary, _boundary);
         Vector3 spawnPosition = new Vector3(transform.position.x, randomY, 0f);
-            Enemy enemy = _pool.Get();
-            enemy.transform.position = spawnPosition;
-            enemy.GetComponent<EnemyShooter>().Initialize(_laserPool);
+
+        Enemy enemy = _pool.Get();
+        enemy.transform.position = spawnPosition;
+        enemy.ReadyToReturn += OnEnemyReadyToReturn;
+    }
+
+    private void OnEnemyReadyToReturn(IPoolable poolable)
+    {
+        if (poolable is not Enemy enemy) return;
+
+        enemy.ReadyToReturn -= OnEnemyReadyToReturn;
+        _pool.Release(enemy);
     }
 }
