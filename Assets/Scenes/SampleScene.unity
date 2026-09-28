@@ -3345,8 +3345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143213270313ecd4cb8963da9b9128c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6521837233303826330, guid: 24af6117db327354f88a4458bac336a0, type: 3}
-  _laserPool: {fileID: 1548090027}
+  _laserPool: {fileID: 1548090029}
 --- !u!114 &1090637128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3359,7 +3358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97a090af9ff5b44da352257019ec564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1264717487572771958, guid: f54ecf98af710ab4181b4285c6c45e9a, type: 3}
 --- !u!1 &1093806709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65e9d8e3316123f46bb7d988a8cccca8, type: 3}
@@ -4014,7 +4012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 652470653}
-  _laserPool: {fileID: 1548090027}
+  _laserSpawner: {fileID: 1548090031}
 --- !u!1 &1268503652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4155,6 +4153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pool: {fileID: 1090637127}
+  _prefab: {fileID: 6521837233303826330, guid: 24af6117db327354f88a4458bac336a0, type: 3}
+  _enemyLaserSpawner: {fileID: 1548090030}
   _boundary: 3.8
   _spawnInterval: 4
 --- !u!1001 &1330117052
@@ -4816,8 +4816,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1548090028}
   - component: {fileID: 1548090027}
+  - component: {fileID: 1548090029}
+  - component: {fileID: 1548090031}
+  - component: {fileID: 1548090030}
   m_Layer: 0
-  m_Name: Laser Pool
+  m_Name: Laser Pools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,7 +4838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77adfe3323a4304db13aaeec0a2bbc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1980048338018977400, guid: 31aca6caa1fc4234f8f4c4b2907e30eb, type: 3}
 --- !u!4 &1548090028
 Transform:
   m_ObjectHideFlags: 0
@@ -4851,6 +4853,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 985050883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548090029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548090026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77adfe3323a4304db13aaeec0a2bbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1548090030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548090026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a569140744ccc4ab01ed02c829049e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool: {fileID: 1548090029}
+  _prefab: {fileID: 1264717487572771958, guid: f54ecf98af710ab4181b4285c6c45e9a, type: 3}
+--- !u!114 &1548090031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548090026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a569140744ccc4ab01ed02c829049e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool: {fileID: 1548090027}
+  _prefab: {fileID: 1980048338018977400, guid: 31aca6caa1fc4234f8f4c4b2907e30eb, type: 3}
 --- !u!1 &1580380661
 GameObject:
   m_ObjectHideFlags: 0
