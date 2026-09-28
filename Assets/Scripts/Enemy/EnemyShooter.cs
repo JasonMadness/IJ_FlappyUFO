@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -7,13 +6,12 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _interval = 3f;
 
-    private LaserPool _laserPool;
+    private LaserSpawner _laserSpawner;
     private Coroutine _shootRoutine;
-    private readonly List<Laser> _activeLasers = new();
 
-    public void Initialize(LaserPool laserPool)
+    public void Initialize(LaserSpawner laserSpawner)
     {
-        _laserPool = laserPool;
+        _laserSpawner = laserSpawner;
     }
 
     private void OnEnable()
@@ -25,11 +23,6 @@ public class EnemyShooter : MonoBehaviour
     {
         if (_shootRoutine != null)
             StopCoroutine(_shootRoutine);
-
-        foreach (Laser laser in _activeLasers)
-            laser.ReadyToReturn -= OnLaserReadyToReturn;
-
-        _activeLasers.Clear();
     }
 
     private IEnumerator ShootLaser()
@@ -45,18 +38,6 @@ public class EnemyShooter : MonoBehaviour
 
     private void Shoot()
     {
-        Laser laser = _laserPool.Get();
-        laser.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
-        laser.ReadyToReturn += OnLaserReadyToReturn;
-        _activeLasers.Add(laser);
-    }
-
-    private void OnLaserReadyToReturn(IPoolable poolable)
-    {
-        if (poolable is not Laser laser) return;
-
-        laser.ReadyToReturn -= OnLaserReadyToReturn;
-        _activeLasers.Remove(laser);
-        _laserPool.Release(laser);
+        _laserSpawner.Spawn(_shootPoint.position, _shootPoint.rotation);
     }
 }
