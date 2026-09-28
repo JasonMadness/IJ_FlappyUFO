@@ -151,4 +151,4 @@ MonoBehaviour:
   _ignoredLayer:
     serializedVersion: 2
     m_Bits: 832
-  _direction: {x: 1, y: 0, z: 0}
+  _direction: {x: -1, y: 0, z: 0}
