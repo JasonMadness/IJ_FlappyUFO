@@ -1,24 +1,21 @@
+using System;
 using UnityEngine;
 
-public class EnemyLaser : MonoBehaviour, IPoolable<EnemyLaser>
+public class EnemyLaser : MonoBehaviour, IPoolable
 {
     private const string EnemyMask = "Enemy";
     private const string PlayerLaserMask = "PlayerLaser";
 
     [SerializeField] private float _speed = 15f;
 
-    private ObjectPool<EnemyLaser> _pool;
+    public event Action<IPoolable> ReadyToReturn;
+
     private LayerMask _ignoredLayer;
 
     private void Awake()
     {
         _ignoredLayer = LayerMask.GetMask(EnemyMask, PlayerLaserMask);
         GetComponent<Collider>().excludeLayers = _ignoredLayer;
-    }
-
-    public void Initialize(ObjectPool<EnemyLaser> pool)
-    {
-        _pool = pool;
     }
 
     private void Update()
@@ -33,6 +30,11 @@ public class EnemyLaser : MonoBehaviour, IPoolable<EnemyLaser>
 
     public void ReturnToPool()
     {
-        _pool.Release(this);
+        ReadyToReturn?.Invoke(this);
+    }
+
+    private void OnDisable()
+    {
+        ReadyToReturn = null;
     }
 }
