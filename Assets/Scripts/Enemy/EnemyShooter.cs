@@ -7,11 +7,11 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _interval = 3f;
 
-    private EnemyLaserPool _laserPool;
+    private LaserPool _laserPool;
     private Coroutine _shootRoutine;
-    private readonly List<EnemyLaser> _activeLasers = new();
+    private readonly List<Laser> _activeLasers = new();
 
-    public void Initialize(EnemyLaserPool laserPool)
+    public void Initialize(LaserPool laserPool)
     {
         _laserPool = laserPool;
     }
@@ -26,7 +26,7 @@ public class EnemyShooter : MonoBehaviour
         if (_shootRoutine != null)
             StopCoroutine(_shootRoutine);
 
-        foreach (EnemyLaser laser in _activeLasers)
+        foreach (Laser laser in _activeLasers)
             laser.ReadyToReturn -= OnLaserReadyToReturn;
 
         _activeLasers.Clear();
@@ -45,7 +45,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Shoot()
     {
-        EnemyLaser laser = _laserPool.Get();
+        Laser laser = _laserPool.Get();
         laser.transform.SetPositionAndRotation(_shootPoint.position, _shootPoint.rotation);
         laser.ReadyToReturn += OnLaserReadyToReturn;
         _activeLasers.Add(laser);
@@ -53,7 +53,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void OnLaserReadyToReturn(IPoolable poolable)
     {
-        if (poolable is not EnemyLaser laser) return;
+        if (poolable is not Laser laser) return;
 
         laser.ReadyToReturn -= OnLaserReadyToReturn;
         _activeLasers.Remove(laser);
