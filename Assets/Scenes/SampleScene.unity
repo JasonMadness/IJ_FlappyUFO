@@ -2783,7 +2783,6 @@ GameObject:
   - component: {fileID: 871656259}
   - component: {fileID: 871656258}
   - component: {fileID: 871656257}
-  - component: {fileID: 871656256}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -2811,18 +2810,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &871656256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871656254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29dc72286e766746aeb3f7c204e9930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &871656257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,8 +2854,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 871656256}
-        m_TargetAssemblyTypeName: Restart, Assembly-CSharp
+      - m_Target: {fileID: 985050886}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -2990,6 +2977,7 @@ GameObject:
   - component: {fileID: 985050883}
   - component: {fileID: 985050884}
   - component: {fileID: 985050885}
+  - component: {fileID: 985050886}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -3031,7 +3019,7 @@ MonoBehaviour:
   _collisionHandler: {fileID: 1261757564}
   _pause: {fileID: 1013692085}
   _gameOver: {fileID: 985050885}
-  _restart: {fileID: 871656256}
+  _sceneLoader: {fileID: 0}
 --- !u!114 &985050885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3045,6 +3033,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverHUD: {fileID: 1763683456}
+--- !u!114 &985050886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985050882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf05f3bee5eab74b9e4246ad552aeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012010882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65e9d8e3316123f46bb7d988a8cccca8, type: 3}
@@ -3347,7 +3347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6521837233303826330, guid: 24af6117db327354f88a4458bac336a0, type: 3}
-  _laserPool: {fileID: 1090637128}
+  _laserPool: {fileID: 1548090027}
 --- !u!114 &1090637128
 MonoBehaviour:
   m_ObjectHideFlags: 0
