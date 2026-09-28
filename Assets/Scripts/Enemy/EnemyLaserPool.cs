@@ -1,1 +1,1 @@
-public class EnemyLaserPool : ObjectPool<EnemyLaser> { }
+public class EnemyLaserPool : ObjectPool<Laser> { }
