@@ -1,21 +1,18 @@
+using System;
 using UnityEngine;
 
-public class Laser : MonoBehaviour, IPoolable<Laser>
+public class Laser : MonoBehaviour, IPoolable
 {
     [SerializeField] private float _speed = 15f;
 
-    private ObjectPool<Laser> _pool;
+    public event Action<IPoolable> ReadyToReturn;
+
     private LayerMask _ignoredLayer;
 
     private void Awake()
     {
         _ignoredLayer = LayerMask.GetMask("Player");
         GetComponent<Collider>().excludeLayers = _ignoredLayer;
-    }
-
-    public void Initialize(ObjectPool<Laser> pool)
-    {
-        _pool = pool;
     }
 
     private void Update()
@@ -30,6 +27,11 @@ public class Laser : MonoBehaviour, IPoolable<Laser>
 
     public void ReturnToPool()
     {
-        _pool.Release(this);
+        ReadyToReturn?.Invoke(this);
+    }
+
+    private void OnDisable()
+    {
+        ReadyToReturn = null;
     }
 }
