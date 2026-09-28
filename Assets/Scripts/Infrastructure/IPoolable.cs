@@ -1,11 +1,7 @@
-using UnityEngine;
+using System;
 
 public interface IPoolable
 {
+    event Action<IPoolable> ReadyToReturn;
     void ReturnToPool();
-}
-
-public interface IPoolable<T> : IPoolable where T : MonoBehaviour, IPoolable<T>
-{
-    void Initialize(ObjectPool<T> pool);
 }
