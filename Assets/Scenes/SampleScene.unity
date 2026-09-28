@@ -2607,6 +2607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985050883}
   - component: {fileID: 985050884}
+  - component: {fileID: 985050885}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2647,6 +2648,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionHandler: {fileID: 1261757564}
   _pause: {fileID: 1013692085}
+  _gameOver: {fileID: 985050885}
+--- !u!114 &985050885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985050882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ca5796a50d0344e8b382ee90523161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012010882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65e9d8e3316123f46bb7d988a8cccca8, type: 3}
