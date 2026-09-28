@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] private GameObject _gameOverHUD;
+
     public void ShowHUD()
     {
-        // Implement logic to show the Game Over HUD
-        Debug.Log("Game Over! Displaying HUD.");
+        _gameOverHUD.SetActive(true);
     }
 }
