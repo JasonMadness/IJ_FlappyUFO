@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyPool : ObjectPool<Enemy>
 {
-    [SerializeField] private EnemyLaserPool _laserPool;
+    [SerializeField] private LaserPool _laserPool;
 
     protected override void OnCreateItem(Enemy enemy)
     {
