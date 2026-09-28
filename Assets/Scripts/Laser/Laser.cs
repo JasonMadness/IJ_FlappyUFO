@@ -4,14 +4,13 @@ using UnityEngine;
 public class Laser : MonoBehaviour, IPoolable
 {
     [SerializeField] private float _speed = 15f;
+    [SerializeField] private LayerMask _ignoredLayer;
 
     public event Action<IPoolable> ReadyToReturn;
 
-    private LayerMask _ignoredLayer;
 
     private void Awake()
     {
-        _ignoredLayer = LayerMask.GetMask("Player");
         GetComponent<Collider>().excludeLayers = _ignoredLayer;
     }
 
