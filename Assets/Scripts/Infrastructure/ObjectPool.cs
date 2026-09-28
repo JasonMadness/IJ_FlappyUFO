@@ -1,37 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPoolable
+public class ObjectPool<T> : MonoBehaviour where T : Component
 {
-    [SerializeField] private T _prefab;
-
     private readonly Queue<T> _pool = new();
 
-    public T Get()
+    public bool TryGet(out T item)
     {
-        if (_pool.Count == 0)
-            Create();
+        if (_pool.Count > 0)
+        {
+            item = _pool.Dequeue();
+            return true;
+        }
 
-        T item = _pool.Dequeue();
-        item.gameObject.SetActive(true);
-        return item;
+        item = null;
+        return false;
     }
 
     public void Release(T item)
     {
-        if (item.gameObject.activeSelf == false)
-            return;
-
-        item.gameObject.SetActive(false);
         _pool.Enqueue(item);
     }
-
-    private void Create()
-    {
-        T newItem = Instantiate(_prefab, transform);
-        OnCreateItem(newItem);
-        Release(newItem);
-    }
-
-    protected virtual void OnCreateItem(T item) { }
 }
