@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
         if (_pool.TryGet(out Enemy enemy) == false)
         {
             enemy = Instantiate(_prefab, transform);
-            enemy.GetComponent<EnemyShooter>().Initialize(_enemyLaserSpawner);
         }
 
         enemy.transform.position = spawnPosition;
