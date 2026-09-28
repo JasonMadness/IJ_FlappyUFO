@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPoolable<T>
+public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPoolable
 {
     [SerializeField] private T _prefab;
 
-    private Queue<T> _pool = new();
+    private readonly Queue<T> _pool = new();
 
     public T Get()
     {
@@ -19,7 +19,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPo
 
     public void Release(T item)
     {
-        if (_pool.Contains(item))
+        if (item.gameObject.activeSelf == false)
             return;
 
         item.gameObject.SetActive(false);
@@ -29,7 +29,9 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour, IPo
     private void Create()
     {
         T newItem = Instantiate(_prefab, transform);
-        newItem.Initialize(this);
+        OnCreateItem(newItem);
         Release(newItem);
     }
+
+    protected virtual void OnCreateItem(T item) { }
 }
